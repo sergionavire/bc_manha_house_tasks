@@ -1,0 +1,8 @@
+PATCH http://localhost:8080/notepads/6
+Content-Type: application/json
+
+{
+
+    "title": "teste",
+    "subtitle": "teste sub",
+}

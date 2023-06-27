@@ -1,0 +1,8 @@
+PUT http://localhost:8080/notepads/3
+Content-Type: application/json
+
+{
+    "title": "teste atualização 02",
+    "subtitle": "teste sub atualização",
+    "content": "Conteudo teste atualização"
+}

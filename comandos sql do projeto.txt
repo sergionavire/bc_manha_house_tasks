@@ -1,0 +1,36 @@
+CREATE TABLE users (
+	id SERIAL PRIMARY KEY,
+	email VARCHAR(255) NOT NULL,
+	first_name VARCHAR(255) NOT NULL,
+	last_name VARCHAR(255) NOT NULL,
+	created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE houses (
+	id SERIAL PRIMARY KEY,
+	nickname VARCHAR(255) NOT NULL,
+	address VARCHAR(255) NOT NULL,
+	address_number VARCHAR(10) NOT NULL,
+	address_complement VARCHAR(100),
+	address_neighborhood VARCHAR(255) NOT NULL,
+	address_city VARCHAR(255) NOT NULL,
+	address_state VARCHAR(2) NOT NULL,
+	address_postal_code VARCHAR(10) NOT NULL,
+	created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE work_days (
+	id SERIAL PRIMARY KEY,
+	house_id INTEGER REFERENCES houses(id) ON DELETE CASCADE,
+	users_id_worker INTEGER REFERENCES users(id) ON DELETE CASCADE,
+	work_date DATE NOT NULL DEFAULT NOW(),
+	description TEXT,
+	created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE work_day_tasks (
+	id SERIAL PRIMARY KEY,
+	work_day_id INTEGER REFERENCES work_days(id) ON DELETE CASCADE,
+	description VARCHAR(255),
+	created_at TIMESTAMP DEFAULT NOW()
+);
